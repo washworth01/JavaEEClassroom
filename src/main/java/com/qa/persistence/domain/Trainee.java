@@ -41,5 +41,4 @@ public class Trainee
 		this.traineeName = traineeName;
 	}
 	
-	
 }

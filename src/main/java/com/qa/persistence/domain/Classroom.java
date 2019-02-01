@@ -35,11 +35,11 @@ public class Classroom
 
 	}
 
-	public Long getId() {
+	public Long getClassroomID() {
 		return classroomID;
 	}
 
-	public void setId(Long classroomID) {
+	public void setClassroomID(Long classroomID) {
 		this.classroomID = classroomID;
 	}
 
