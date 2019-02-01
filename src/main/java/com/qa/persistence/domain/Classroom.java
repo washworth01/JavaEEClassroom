@@ -1,26 +1,30 @@
 package com.qa.persistence.domain;
 
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "Classroom")
 public class Classroom
 {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long classroomID;
-	
+	@Column
 	private String trainer;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="trainee")
-	@JoinColumn(name = "traineeID")
-	private List<Trainee> trainees;
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "classroomID")
+	private Collection<Trainee> trainees = new LinkedHashSet<Trainee>();
 	
 	
 	public Classroom()
@@ -51,7 +55,7 @@ public class Classroom
 		this.trainer = trainer;
 	}
 
-	public List<Trainee> getTrainees() {
+	public Collection<Trainee> getTrainees() {
 		return trainees;
 	}
 

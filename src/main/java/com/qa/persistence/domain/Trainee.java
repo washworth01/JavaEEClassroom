@@ -1,17 +1,22 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "Trainee")
 public class Trainee 
 {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long traineeID;
-	
+	@Column
+	private Long classroomID;
+	@Column
 	private String traineeName;
 	
 	
@@ -20,8 +25,9 @@ public class Trainee
 		
 	}
 	
-	public Trainee(String traineeName)
+	public Trainee(String traineeName, Long classroomID)
 	{
+		this.classroomID = classroomID;
 		this.traineeName = traineeName;
 	}
 

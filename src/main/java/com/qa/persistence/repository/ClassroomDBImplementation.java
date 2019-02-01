@@ -1,7 +1,5 @@
 package com.qa.persistence.repository;
 
-import static javax.transaction.Transactional.TxType.SUPPORTS;
-
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
