@@ -4,14 +4,16 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
-import com.qa.persistence.domain.Classroom;
 import com.qa.persistence.domain.Trainee;
 import com.qa.util.JSONUtil;
 
 import static javax.transaction.Transactional.TxType.*;
+
+import java.util.List;
 
 @Default
 @Transactional(SUPPORTS)
@@ -26,8 +28,10 @@ public class TraineeDBImplementation implements TraineeRepository
 	@Override
 	public String getAllTrainees() 
 	{
-		TypedQuery<Trainee> query = eManager.createQuery("SELECT c FROM Trainee c ORDER BY trainer", Trainee.class);
-		return util.getJSONForObject(query.getResultList());
+		Query query = eManager.createQuery("SELECT c FROM Trainee c");
+		@SuppressWarnings("unchecked")
+		List<Trainee> trainees = query.getResultList();
+		return util.getJSONForObject(trainees);
 	}
 
 	@Override

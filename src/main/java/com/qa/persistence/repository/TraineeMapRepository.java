@@ -3,14 +3,15 @@ package com.qa.persistence.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 
 import com.qa.persistence.domain.Trainee;
 import com.qa.util.JSONUtil;
 
+@Alternative
 public class TraineeMapRepository implements TraineeRepository
 {
-
 	@Inject
 	JSONUtil util;
 	
